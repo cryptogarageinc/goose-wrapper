@@ -1,0 +1,75 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    name: Create Release
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          persist-credentials: false
+
+      - name: Set up Go
+        uses: actions/setup-go@7a3fe6cf4cb3a834922a1244abfce67bcef6a0c5 # v6.2.0
+        with:
+          go-version-file: 'go.mod'
+
+      - name: Get version
+        id: get_version
+        run: echo "VERSION=${GITHUB_REF#refs/tags/}" >> $GITHUB_OUTPUT
+
+      - name: Build binaries
+        run: |
+          mkdir -p dist
+
+          # linux/amd64
+          GOOS=linux GOARCH=amd64 go build -o dist/goose-linux-amd64 -ldflags="-s -w -X main.version=${{ steps.get_version.outputs.VERSION }}" ./cmd/goose
+          tar czf dist/goose-${{ steps.get_version.outputs.VERSION }}-linux-amd64.tar.gz -C dist goose-linux-amd64
+
+          # linux/arm64
+          GOOS=linux GOARCH=arm64 go build -o dist/goose-linux-arm64 -ldflags="-s -w -X main.version=${{ steps.get_version.outputs.VERSION }}" ./cmd/goose
+          tar czf dist/goose-${{ steps.get_version.outputs.VERSION }}-linux-arm64.tar.gz -C dist goose-linux-arm64
+
+          # darwin/amd64
+          GOOS=darwin GOARCH=amd64 go build -o dist/goose-darwin-amd64 -ldflags="-s -w -X main.version=${{ steps.get_version.outputs.VERSION }}" ./cmd/goose
+          tar czf dist/goose-${{ steps.get_version.outputs.VERSION }}-darwin-amd64.tar.gz -C dist goose-darwin-amd64
+
+          # darwin/arm64
+          GOOS=darwin GOARCH=arm64 go build -o dist/goose-darwin-arm64 -ldflags="-s -w -X main.version=${{ steps.get_version.outputs.VERSION }}" ./cmd/goose
+          tar czf dist/goose-${{ steps.get_version.outputs.VERSION }}-darwin-arm64.tar.gz -C dist goose-darwin-arm64
+
+          # windows/amd64
+          GOOS=windows GOARCH=amd64 go build -o dist/goose-windows-amd64.exe -ldflags="-s -w -X main.version=${{ steps.get_version.outputs.VERSION }}" ./cmd/goose
+          zip -j dist/goose-${{ steps.get_version.outputs.VERSION }}-windows-amd64.zip dist/goose-windows-amd64.exe
+
+          # windows/arm64
+          GOOS=windows GOARCH=arm64 go build -o dist/goose-windows-arm64.exe -ldflags="-s -w -X main.version=${{ steps.get_version.outputs.VERSION }}" ./cmd/goose
+          zip -j dist/goose-${{ steps.get_version.outputs.VERSION }}-windows-arm64.zip dist/goose-windows-arm64.exe
+
+      - name: Generate checksums
+        run: |
+          cd dist
+          sha256sum *.tar.gz *.zip > checksums.txt
+
+      - name: Create Release
+        uses: softprops/action-gh-release@a06a81a03ee405af7f2048a818ed3f03bbf83c7b # v2.5.0
+        with:
+          files: |
+            dist/*.tar.gz
+            dist/*.zip
+            dist/checksums.txt
+          draft: false
+          prerelease: false
+          generate_release_notes: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
