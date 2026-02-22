@@ -11,8 +11,8 @@ require (
 	github.com/pressly/goose/v3 v3.26.0
 	github.com/tursodatabase/libsql-client-go v0.0.0-20251219100830-236aa1ff8acc
 	github.com/vertica/vertica-sql-go v1.3.5
-	github.com/ydb-platform/ydb-go-sdk/v3 v3.126.4
-	modernc.org/sqlite v1.45.0
+	github.com/ydb-platform/ydb-go-sdk/v3 v3.126.5
+	modernc.org/sqlite v1.46.1
 )
 
 require (
