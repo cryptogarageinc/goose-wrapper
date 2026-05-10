@@ -3,15 +3,15 @@ module github.com/cryptogarageinc/goose-wrapper/v3
 go 1.25.10
 
 require (
-	github.com/ClickHouse/clickhouse-go/v2 v2.45.0
+	github.com/ClickHouse/clickhouse-go/v2 v2.46.0
 	github.com/jackc/pgx/v5 v5.9.2
 	github.com/joho/godotenv v1.5.1
 	github.com/mfridman/xflag v0.1.0
-	github.com/microsoft/go-mssqldb v1.9.8
+	github.com/microsoft/go-mssqldb v1.10.0
 	github.com/pressly/goose/v3 v3.27.1
 	github.com/tursodatabase/libsql-client-go v0.0.0-20251219100830-236aa1ff8acc
 	github.com/vertica/vertica-sql-go v1.3.6
-	github.com/ydb-platform/ydb-go-sdk/v3 v3.135.0
+	github.com/ydb-platform/ydb-go-sdk/v3 v3.135.14
 	modernc.org/sqlite v1.50.0
 )
 
