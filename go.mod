@@ -1,6 +1,6 @@
 module github.com/cryptogarageinc/goose-wrapper/v3
 
-go 1.25.9
+go 1.25.10
 
 require (
 	github.com/ClickHouse/clickhouse-go/v2 v2.45.0
