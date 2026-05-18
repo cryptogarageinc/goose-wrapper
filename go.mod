@@ -11,8 +11,8 @@ require (
 	github.com/pressly/goose/v3 v3.27.1
 	github.com/tursodatabase/libsql-client-go v0.0.0-20251219100830-236aa1ff8acc
 	github.com/vertica/vertica-sql-go v1.3.6
-	github.com/ydb-platform/ydb-go-sdk/v3 v3.135.14
-	modernc.org/sqlite v1.50.0
+	github.com/ydb-platform/ydb-go-sdk/v3 v3.136.2
+	modernc.org/sqlite v1.50.1
 )
 
 require (
@@ -61,7 +61,7 @@ require (
 	google.golang.org/grpc v1.80.0 // indirect
 	google.golang.org/protobuf v1.36.11 // indirect
 	howett.net/plist v1.0.1 // indirect
-	modernc.org/libc v1.72.1 // indirect
+	modernc.org/libc v1.72.3 // indirect
 	modernc.org/mathutil v1.7.1 // indirect
 	modernc.org/memory v1.11.0 // indirect
 )
