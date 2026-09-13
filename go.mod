@@ -4,7 +4,7 @@ go 1.26.8
 
 require (
 	github.com/ClickHouse/clickhouse-go/v2 v2.48.0
-	github.com/jackc/pgx/v5 v5.10.0
+	github.com/jackc/pgx/v5 v5.11.0
 	github.com/joho/godotenv v1.5.1
 	github.com/mfridman/xflag v0.1.0
 	github.com/microsoft/go-mssqldb v1.11.0
