@@ -7,11 +7,11 @@ require (
 	github.com/jackc/pgx/v5 v5.11.0
 	github.com/joho/godotenv v1.5.1
 	github.com/mfridman/xflag v0.1.0
-	github.com/microsoft/go-mssqldb v1.11.0
+	github.com/microsoft/go-mssqldb v1.11.2
 	github.com/pressly/goose/v3 v3.28.0
 	github.com/tursodatabase/libsql-client-go v0.0.0-20260528064733-9d5d30a29a60
 	github.com/vertica/vertica-sql-go v1.3.8
-	github.com/ydb-platform/ydb-go-sdk/v3 v3.151.3
+	github.com/ydb-platform/ydb-go-sdk/v3 v3.151.5
 	modernc.org/sqlite v1.59.0
 )
 
