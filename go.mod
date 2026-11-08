@@ -4,15 +4,15 @@ go 1.26.8
 
 require (
 	github.com/ClickHouse/clickhouse-go/v2 v2.50.0
-	github.com/jackc/pgx/v5 v5.11.0
+	github.com/jackc/pgx/v5 v5.12.0
 	github.com/joho/godotenv v1.5.1
 	github.com/mfridman/xflag v0.1.0
 	github.com/microsoft/go-mssqldb v1.11.2
 	github.com/pressly/goose/v3 v3.29.0
 	github.com/tursodatabase/libsql-client-go v0.0.0-20260528064733-9d5d30a29a60
 	github.com/vertica/vertica-sql-go v1.3.9
-	github.com/ydb-platform/ydb-go-sdk/v3 v3.155.1
-	modernc.org/sqlite v1.61.0
+	github.com/ydb-platform/ydb-go-sdk/v3 v3.156.1
+	modernc.org/sqlite v1.61.1
 )
 
 require (
