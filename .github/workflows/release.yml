@@ -29,6 +29,8 @@ jobs:
         run: echo "VERSION=${GITHUB_REF#refs/tags/}" >> $GITHUB_OUTPUT
 
       - name: Build binaries
+        env:
+          CGO_ENABLED: 0
         run: |
           mkdir -p dist
 

@@ -9,6 +9,8 @@ VERSION=$1
 
 mkdir -p dist
 
+export CGO_ENABLED=0
+
 # linux/amd64
 GOOS=linux GOARCH=amd64 go build -o dist/goose-linux-amd64 -ldflags="-s -w -X main.version=${VERSION}" ./cmd/goose
 tar czf dist/goose-${VERSION}-linux-amd64.tar.gz -C dist goose-linux-amd64
