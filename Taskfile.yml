@@ -1,12 +1,12 @@
 version: '3'
 
 vars:
-  GOIMPORTS_VERSION: v0.41.0
-  GOLANGCI_LINT_VERSION: v2.8.0
-  YAMLFMT_VERSION: v0.17.2
-  ACTIONLINT_VERSION: v1.7.10
-  GHALINT_VERSION: v1.5.5
-  PINACT_VERSION: v3.9.0
+  GOIMPORTS_VERSION: v0.53.0
+  GOLANGCI_LINT_VERSION: v2.15.0
+  YAMLFMT_VERSION: v0.21.0
+  ACTIONLINT_VERSION: v1.7.12
+  GHALINT_VERSION: v1.6.0
+  PINACT_VERSION: v5.0.2
   GOVULNCHECK_VERSION: latest
   DB_DSN: 'postgres://testuser:testpass@localhost:33432/testdb?sslmode=disable'
 
@@ -49,12 +49,12 @@ tasks:
   lint-actions-pinact:
     desc: Run pinact for GitHub Actions workflows
     cmds:
-      - go run github.com/suzuki-shunsuke/pinact/v3/cmd/pinact@{{.PINACT_VERSION}} run
+      - go run github.com/suzuki-shunsuke/pinact/v5/cmd/pinact@{{.PINACT_VERSION}} run
 
   pinact-update:
     desc: Run pinact for GitHub Actions workflows
     cmds:
-      - go run github.com/suzuki-shunsuke/pinact/v3/cmd/pinact@{{.PINACT_VERSION}} run -u
+      - go run github.com/suzuki-shunsuke/pinact/v5/cmd/pinact@{{.PINACT_VERSION}} run -u
 
   lint-actions:
     desc: Run all GitHub Actions workflow linters
